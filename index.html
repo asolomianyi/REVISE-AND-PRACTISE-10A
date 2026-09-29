@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Revise and Practise - Interactive Module</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .slide-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 text-white p-2.5 rounded-xl shadow-md flex items-center justify-center font-bold text-lg">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <span class="text-xs uppercase font-bold tracking-wider text-indigo-600">My Family and Friends</span>
+                    <h1 class="text-lg font-bold text-slate-900">Let's Revise and Practise</h1>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <span id="progress-indicator" class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full">Слайд 1 з 5</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-4xl w-full mx-auto px-4 py-8 flex-grow flex items-center justify-center">
+        
+        <div id="slides-container" class="w-full bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden slide-transition">
+            
+            <!-- SLIDE 1: Welcome -->
+            <div class="slide p-8 md:p-12 text-center" data-slide="1">
+                <div class="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-3xl mx-auto flex items-center justify-center text-3xl mb-6 shadow-inner">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                </div>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Вітаємо у навчальному модулі!</h2>
+                <p class="text-slate-600 max-w-xl mx-auto mb-8 text-lg">
+                    Цей інтерактивний тренажер створено на основі вашого підручника. Перевірте свої знання лексики, граматики та стійких виразів прямо у браузері.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left max-w-2xl mx-auto mb-8">
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                        <div class="text-indigo-600 font-bold mb-1"><i class="fa-solid fa-puzzle-piece mr-2"></i>Task 1</div>
+                        <p class="text-xs text-slate-500">Синоніми та характеристики особистості</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                        <div class="text-indigo-600 font-bold mb-1"><i class="fa-solid fa-list-check mr-2"></i>Task 2</div>
+                        <p class="text-xs text-slate-500">Лексичний тест з вибором варіантів</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                        <div class="text-indigo-600 font-bold mb-1"><i class="fa-solid fa-pen-nib mr-2"></i>Task 3</div>
+                        <p class="text-xs text-slate-500">Доповнення речень фразами з рамки</p>
+                    </div>
+                </div>
+                <button onclick="nextSlide()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3.5 rounded-xl shadow-lg shadow-indigo-200 transition transform active:scale-95">
+                    Розпочати практику <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+
+            <!-- SLIDE 2: Task 1 -->
+            <div class="slide p-6 md:p-10 hidden" data-slide="2">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">Завдання 1 з 3</span>
+                        <h3 class="text-xl font-bold text-slate-900 mt-1">1. Match the phrase with the word</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 hidden sm:block">З'єднайте опис із відповідним синонімом</p>
+                </div>
+
+                <div class="space-y-4 mb-8">
+                    <!-- Item 1 -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-200/60 gap-3">
+                        <span class="text-sm font-medium text-slate-700">1. Someone who is <b>anxious</b> can also be described as...</span>
+                        <select id="t1-q1" class="bg-white border border-slate-300 text-slate-800 text-sm rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none">
+                            <option value="">-- Виберіть варіант --</option>
+                            <option value="a">a. pessimistic</option>
+                            <option value="b">b. obstinate</option>
+                            <option value="c">c. trustworthy</option>
+                            <option value="d">d. worried</option>
+                            <option value="e">e. open-handed</option>
+                            <option value="f">f. joyful</option>
+                        </select>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-200/60 gap-3">
+                        <span class="text-sm font-medium text-slate-700">2. Someone who is <b>generous</b> can also be described as...</span>
+                        <select id="t1-q2" class="bg-white border border-slate-300 text-slate-800 text-sm rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none">
+                            <option value="">-- Виберіть варіант --</option>
+                            <option value="a">a. pessimistic</option>
+                            <option value="b">b. obstinate</option>
+                            <option value="c">c. trustworthy</option>
+                            <option value="d">d. worried</option>
+                            <option value="e">e. open-handed</option>
+                            <option value="f">f. joyful</option>
+                        </select>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-200/60 gap-3">
+                        <span class="text-sm font-medium text-slate-700">3. Someone who is <b>stubborn</b> can also be described as...</span>
+                        <select id="t1-q3" class="bg-white border border-slate-300 text-slate-800 text-sm rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none">
+                            <option value="">-- Виберіть варіант --</option>
+                            <option value="a">a. pessimistic</option>
+                            <option value="b">b. obstinate</option>
+                            <option value="c">c. trustworthy</option>
+                            <option value="d">d. worried</option>
+                            <option value="e">e. open-handed</option>
+                            <option value="f">f. joyful</option>
+                        </select>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-200/60 gap-3">
+                        <span class="text-sm font-medium text-slate-700">4. Someone who is <b>cheerful</b> can also be described as...</span>
+                        <select id="t1-q4" class="bg-white border border-slate-300 text-slate-800 text-sm rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none">
+                            <option value="">-- Виберіть варіант --</option>
+                            <option value="a">a. pessimistic</option>
+                            <option value="b">b. obstinate</option>
+                            <option value="c">c. trustworthy</option>
+                            <option value="d">d. worried</option>
+                            <option value="e">e. open-handed</option>
+                            <option value="f">f. joyful</option>
+                        </select>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-200/60 gap-3">
+                        <span class="text-sm font-medium text-slate-700">5. Someone who is <b>gloomy</b> can also be described as...</span>
+                        <select id="t1-q5" class="bg-white border border-slate-300 text-slate-800 text-sm rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none">
+                            <option value="">-- Виберіть варіант --</option>
+                            <option value="a">a. pessimistic</option>
+                            <option value="b">b. obstinate</option>
+                            <option value="c">c. trustworthy</option>
+                            <option value="d">d. worried</option>
+                            <option value="e">e. open-handed</option>
+                            <option value="f">f. joyful</option>
+                        </select>
+                    </div>
+                    <!-- Item 6 -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-50 rounded-xl border border-slate-200/60 gap-3">
+                        <span class="text-sm font-medium text-slate-700">6. Someone who is <b>reliable</b> can also be described as...</span>
+                        <select id="t1-q6" class="bg-white border border-slate-300 text-slate-800 text-sm rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none">
+                            <option value="">-- Виберіть варіант --</option>
+                            <option value="a">a. pessimistic</option>
+                            <option value="b">b. obstinate</option>
+                            <option value="c">c. trustworthy</option>
+                            <option value="d">d. worried</option>
+                            <option value="e">e. open-handed</option>
+                            <option value="f">f. joyful</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-100">
+                    <div class="flex space-x-2">
+                        <button onclick="checkTask1()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-5 py-2.5 rounded-xl shadow transition text-sm">
+                            <i class="fa-solid fa-check mr-1.5"></i> Перевірити
+                        </button>
+                        <button onclick="showKey1()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium px-4 py-2.5 rounded-xl transition text-sm">
+                            <i class="fa-solid fa-key mr-1.5"></i> Ключі
+                        </button>
+                    </div>
+                    <div id="t1-feedback" class="text-sm font-bold"></div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: Task 2 -->
+            <div class="slide p-6 md:p-10 hidden" data-slide="3">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">Завдання 2 з 3</span>
+                        <h3 class="text-xl font-bold text-slate-900 mt-1">2. Read the text and fill in the blanks</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 hidden sm:block">Оберіть правильний варіант (A, B, C, D)</p>
+                </div>
+
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200/60 text-sm leading-relaxed text-slate-700 mb-6">
+                    It is often hard to know what to do when plans change unexpectedly. 
+                    <span class="inline-flex items-center mx-1 my-1">
+                        (1) <select id="t2-q1" class="mx-1 border border-slate-300 rounded px-2 py-1 text-xs bg-white font-bold"><option value="">--?</option><option value="A">A. That</option><option value="B">B. All</option><option value="C">C. What</option><option value="D">D. It</option></select>
+                    </span> 
+                    you need to remember is that flexibility is key; when plans fall apart, people usually feel stressed and anxious, checking their phones and sighing. This is 
+                    <span class="inline-flex items-center mx-1 my-1">
+                        (2) <select id="t2-q2" class="mx-1 border border-slate-300 rounded px-2 py-1 text-xs bg-white font-bold"><option value="">--?</option><option value="A">A. exactly</option><option value="B">B. anyway</option><option value="C">C. moreover</option><option value="D">D. although</option></select>
+                    </span> 
+                    what most people instinctively do. However, Dr. Alan Grant of London University, has 
+                    <span class="inline-flex items-center mx-1 my-1">
+                        (3) <select id="t2-q3" class="mx-1 border border-slate-300 rounded px-2 py-1 text-xs bg-white font-bold"><option value="">--?</option><option value="A">A. arrived</option><option value="B">B. come</option><option value="C">C. been</option><option value="D">D. reached</option></select>
+                    </span> 
+                    to a different conclusion. Researching the behaviour of travellers who had experienced major flight cancellations, Grant discovered that resilient individuals actually stay quite calm. This is because they know 
+                    <span class="inline-flex items-center mx-1 my-1">
+                        (4) <select id="t2-q4" class="mx-1 border border-slate-300 rounded px-2 py-1 text-xs bg-white font-bold"><option value="">--?</option><option value="A">A. with</option><option value="B">B. of</option><option value="C">C. that</option><option value="D">D. on</option></select>
+                    </span> 
+                    getting upset will not solve the problem.<br><br>
+                    Therefore, travellers 
+                    <span class="inline-flex items-center mx-1 my-1">
+                        (5) <select id="t2-q5" class="mx-1 border border-slate-300 rounded px-2 py-1 text-xs bg-white font-bold"><option value="">--?</option><option value="A">A. shows</option><option value="B">B. speaks</option><option value="C">C. who</option><option value="D">D. goes</option></select>
+                    </span> 
+                    panic 30% less than rigid individuals. The same 
+                    <span class="inline-flex items-center mx-1 my-1">
+                        (6) <select id="t2-q6" class="mx-1 border border-slate-300 rounded px-2 py-1 text-xs bg-white font-bold"><option value="">--?</option><option value="A">A. telling</option><option value="B">B. saying</option><option value="C">C. holds</option><option value="D">D. giving</option></select>
+                    </span> 
+                    true for finding alternative routes. In reality, it seems, successful travellers make sure 
+                    <span class="inline-flex items-center mx-1 my-1">
+                        (7) <select id="t2-q7" class="mx-1 border border-slate-300 rounded px-2 py-1 text-xs bg-white font-bold"><option value="">--?</option><option value="A">A. extend</option><option value="B">B. maintain</option><option value="C">C. to</option><option value="D">D. deliver</option></select>
+                    </span> 
+                    control their immediate frustration.
+                </div>
+
+                <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-100">
+                    <div class="flex space-x-2">
+                        <button onclick="checkTask2()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-5 py-2.5 rounded-xl shadow transition text-sm">
+                            <i class="fa-solid fa-check mr-1.5"></i> Перевірити
+                        </button>
+                        <button onclick="showKey2()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium px-4 py-2.5 rounded-xl transition text-sm">
+                            <i class="fa-solid fa-key mr-1.5"></i> Ключі
+                        </button>
+                    </div>
+                    <div id="t2-feedback" class="text-sm font-bold"></div>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: Task 3 -->
+            <div class="slide p-6 md:p-10 hidden" data-slide="4">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">Завдання 3 з 3</span>
+                        <h3 class="text-xl font-bold text-slate-900 mt-1">3. Complete the story with the phrases</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 hidden sm:block">Виберіть вираз із рамки для кожного пропуску</p>
+                </div>
+
+                <!-- Box of phrases -->
+                <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-xl mb-6 text-xs sm:text-sm text-indigo-900 flex flex-wrap gap-2 items-center justify-center font-medium">
+                    <span class="bg-white px-3 py-1 rounded-lg border border-indigo-200 shadow-sm">a. little by little</span>
+                    <span class="bg-white px-3 py-1 rounded-lg border border-indigo-200 shadow-sm">b. year after year</span>
+                    <span class="bg-white px-3 py-1 rounded-lg border border-indigo-200 shadow-sm">c. from that moment on</span>
+                    <span class="bg-white px-3 py-1 rounded-lg border border-indigo-200 shadow-sm">d. every now and then</span>
+                    <span class="bg-white px-3 py-1 rounded-lg border border-indigo-200 shadow-sm">e. once and for all</span>
+                </div>
+
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200/60 text-sm leading-relaxed text-slate-700 mb-6 space-y-4">
+                    <p>
+                        When I started learning to drive, my instructor used to take me to a quiet industrial estate 
+                        <select id="t3-q1" class="mx-1 border border-slate-300 rounded px-2 py-1 text-xs bg-white font-bold">
+                            <option value="">-- виберіть вираз --</option>
+                            <option value="a">a. little by little</option>
+                            <option value="b">b. year after year</option>
+                            <option value="c">c. from that moment on</option>
+                            <option value="d">d. every now and then</option>
+                            <option value="e">e. once and for all</option>
+                        </select> 
+                        to practice parking. One afternoon, I accidentally misjudged the distance and bumped into a concrete pole.
+                    </p>
+                    <p>
+                        I was so embarrassed that I wanted to quit right 
+                        <select id="t3-q2" class="mx-1 border border-slate-300 rounded px-2 py-1 text-xs bg-white font-bold">
+                            <option value="">-- виберіть вираз --</option>
+                            <option value="a">a. little by little</option>
+                            <option value="b">b. year after year</option>
+                            <option value="c">c. from that moment on</option>
+                            <option value="d">d. every now and then</option>
+                            <option value="e">e. once and for all</option>
+                        </select> 
+                        . However, my instructor encouraged me to get back behind the wheel.
+                    </p>
+                    <p>
+                        I never made that exact mistake again, but 
+                        <select id="t3-q3" class="mx-1 border border-slate-300 rounded px-2 py-1 text-xs bg-white font-bold">
+                            <option value="">-- виберіть вираз --</option>
+                            <option value="a">a. little by little</option>
+                            <option value="b">b. year after year</option>
+                            <option value="c">c. from that moment on</option>
+                            <option value="d">d. every now and then</option>
+                            <option value="e">e. once and for all</option>
+                        </select> 
+                        I still get nervous near concrete pillars. One thing is for certain: that minor accident taught me to pay attention to my mirrors 
+                        <select id="t3-q4" class="mx-1 border border-slate-300 rounded px-2 py-1 text-xs bg-white font-bold">
+                            <option value="">-- виберіть вираз --</option>
+                            <option value="a">a. little by little</option>
+                            <option value="b">b. year after year</option>
+                            <option value="c">c. from that moment on</option>
+                            <option value="d">d. every now and then</option>
+                            <option value="e">e. once and for all</option>
+                        </select> 
+                        ! No, 
+                        <select id="t3-q5" class="mx-1 border border-slate-300 rounded px-2 py-1 text-xs bg-white font-bold">
+                            <option value="">-- виберіть вираз --</option>
+                            <option value="a">a. little by little</option>
+                            <option value="b">b. year after year</option>
+                            <option value="c">c. from that moment on</option>
+                            <option value="d">d. every now and then</option>
+                            <option value="e">e. once and for all</option>
+                        </select> 
+                        !
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-100">
+                    <div class="flex space-x-2">
+                        <button onclick="checkTask3()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-5 py-2.5 rounded-xl shadow transition text-sm">
+                            <i class="fa-solid fa-check mr-1.5"></i> Перевірити
+                        </button>
+                        <button onclick="showKey3()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium px-4 py-2.5 rounded-xl transition text-sm">
+                            <i class="fa-solid fa-key mr-1.5"></i> Ключі
+                        </button>
+                    </div>
+                    <div id="t3-feedback" class="text-sm font-bold"></div>
+                </div>
+            </div>
+
+            <!-- SLIDE 5: Summary -->
+            <div class="slide p-8 md:p-12 text-center hidden" data-slide="5">
+                <div class="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-3xl mx-auto flex items-center justify-center text-3xl mb-6 shadow-inner">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Чудова робота!</h2>
+                <p class="text-slate-600 max-w-md mx-auto mb-8 text-base">
+                    Ви успішно переглянули та опрацювали всі практичні завдання. Ви можете повернутися на будь-який слайд, щоб повторити матеріал або змінити відповіді.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <button onclick="goToSlide(1)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium px-6 py-3 rounded-xl transition">
+                        <i class="fa-solid fa-rotate-left mr-2"></i> На початок
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Navigation Footer Controls -->
+    <footer class="bg-white border-t border-slate-200 py-4 shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 flex justify-between items-center">
+            <button id="prev-btn" onclick="prevSlide()" class="flex items-center space-x-2 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium px-5 py-2.5 rounded-xl text-sm transition shadow-sm disabled:opacity-40 disabled:cursor-not-allowed">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Назад</span>
+            </button>
+            <div class="flex space-x-1.5" id="dots-container">
+                <!-- Dots generated by JS -->
+            </div>
+            <button id="next-btn" onclick="nextSlide()" class="flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-5 py-2.5 rounded-xl text-sm transition shadow-sm shadow-indigo-100 disabled:opacity-40 disabled:cursor-not-allowed">
+                <span>Далі</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 5;
+
+        function updateView() {
+            // Show/Hide slides
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach((slide) => {
+                if (parseInt(slide.dataset.slide) === currentSlide) {
+                    slide.classList.remove('hidden');
+                } else {
+                    slide.classList.add('hidden');
+                }
+            });
+
+            // Update Header Indicator
+            document.getElementById('progress-indicator').innerText = `Слайд ${currentSlide} з ${totalSlides}`;
+
+            // Update Navigation Buttons
+            document.getElementById('prev-btn').disabled = currentSlide === 1;
+            document.getElementById('next-btn').disabled = currentSlide === totalSlides;
+
+            // Update Dots
+            renderDots();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderDots() {
+            const container = document.getElementById('dots-container');
+            container.innerHTML = '';
+            for (let i = 1; i <= totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = `w-2.5 h-2.5 rounded-full transition-all ${i === currentSlide ? 'bg-indigo-600 w-6' : 'bg-slate-300 hover:bg-slate-400'}`;
+                dot.onclick = () => goToSlide(i);
+                container.appendChild(dot);
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateView();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateView();
+            }
+        }
+
+        function goToSlide(slideNum) {
+            currentSlide = slideNum;
+            updateView();
+        }
+
+        // --- Checkers and Keys ---
+
+        // Task 1 Keys: 1-d, 2-e, 3-b, 4-f, 5-a, 6-c
+        const key1 = { 't1-q1': 'd', 't1-q2': 'e', 't1-q3': 'b', 't1-q4': 'f', 't1-q5': 'a', 't1-q6': 'c' };
+        function checkTask1() {
+            let correctCount = 0;
+            for (let id in key1) {
+                const el = document.getElementById(id);
+                if (el.value === key1[id]) {
+                    el.classList.remove('border-red-400', 'bg-red-50');
+                    el.classList.add('border-emerald-500', 'bg-emerald-50');
+                    correctCount++;
+                } else {
+                    el.classList.remove('border-emerald-500', 'bg-emerald-50');
+                    el.classList.add('border-red-400', 'bg-red-50');
+                }
+            }
+            const feedback = document.getElementById('t1-feedback');
+            feedback.innerText = `Правильно: ${correctCount} з 6`;
+            feedback.className = correctCount === 6 ? 'text-sm font-bold text-emerald-600' : 'text-sm font-bold text-amber-600';
+        }
+        function showKey1() {
+            for (let id in key1) {
+                const el = document.getElementById(id);
+                el.value = key1[id];
+                el.classList.remove('border-red-400', 'bg-red-50');
+                el.classList.add('border-emerald-500', 'bg-emerald-50');
+            }
+            document.getElementById('t1-feedback').innerText = "Всі ключі показано!";
+            document.getElementById('t1-feedback').className = 'text-sm font-bold text-indigo-600';
+        }
+
+        // Task 2 Keys: 1-C, 2-A, 3-B, 4-C, 5-C, 6-C, 7-C
+        const key2 = { 't2-q1': 'C', 't2-q2': 'A', 't2-q3': 'B', 't2-q4': 'C', 't2-q5': 'C', 't2-q6': 'C', 't2-q7': 'C' };
+        function checkTask2() {
+            let correctCount = 0;
+            for (let id in key2) {
+                const el = document.getElementById(id);
+                if (el.value === key2[id]) {
+                    el.classList.remove('border-red-400', 'bg-red-50');
+                    el.classList.add('border-emerald-500', 'bg-emerald-50');
+                    correctCount++;
+                } else {
+                    el.classList.remove('border-emerald-500', 'bg-emerald-50');
+                    el.classList.add('border-red-400', 'bg-red-50');
+                }
+            }
+            const feedback = document.getElementById('t2-feedback');
+            feedback.innerText = `Правильно: ${correctCount} з 7`;
+            feedback.className = correctCount === 7 ? 'text-sm font-bold text-emerald-600' : 'text-sm font-bold text-amber-600';
+        }
+        function showKey2() {
+            for (let id in key2) {
+                const el = document.getElementById(id);
+                el.value = key2[id];
+                el.classList.remove('border-red-400', 'bg-red-50');
+                el.classList.add('border-emerald-500', 'bg-emerald-50');
+            }
+            document.getElementById('t2-feedback').innerText = "Всі ключі показано!";
+            document.getElementById('t2-feedback').className = 'text-sm font-bold text-indigo-600';
+        }
+
+        // Task 3 Keys: 1-d, 2-c, 3-d, 4-b, 5-e
+        const key3 = { 't3-q1': 'd', 't3-q2': 'c', 't3-q3': 'd', 't3-q4': 'b', 't3-q5': 'e' };
+        function checkTask3() {
+            let correctCount = 0;
+            for (let id in key3) {
+                const el = document.getElementById(id);
+                if (el.value === key3[id]) {
+                    el.classList.remove('border-red-400', 'bg-red-50');
+                    el.classList.add('border-emerald-500', 'bg-emerald-50');
+                    correctCount++;
+                } else {
+                    el.classList.remove('border-emerald-500', 'bg-emerald-50');
+                    el.classList.add('border-red-400', 'bg-red-50');
+                }
+            }
+            const feedback = document.getElementById('t3-feedback');
+            feedback.innerText = `Правильно: ${correctCount} з 5`;
+            feedback.className = correctCount === 5 ? 'text-sm font-bold text-emerald-600' : 'text-sm font-bold text-amber-600';
+        }
+        function showKey3() {
+            for (let id in key3) {
+                const el = document.getElementById(id);
+                el.value = key3[id];
+                el.classList.remove('border-red-400', 'bg-red-50');
+                el.classList.add('border-emerald-500', 'bg-emerald-50');
+            }
+            document.getElementById('t3-feedback').innerText = "Всі ключі показано!";
+            document.getElementById('t3-feedback').className = 'text-sm font-bold text-indigo-600';
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            updateView();
+        }
+    </script>
+</body>
+</html>
